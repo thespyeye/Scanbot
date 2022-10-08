@@ -1,2 +1,2 @@
 # Scanbot
-This code is very, very unfinished. I will update it in the future as I make progress towards the code not being unfinished
+This code is very early in development and currently does not function. I will make updates periodically until I am satisfied with the code.
