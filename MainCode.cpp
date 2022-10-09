@@ -55,7 +55,7 @@ class NavLines {
 
 GuideLines MemLines[MaxLines];
 
-void AddLine(double * StartPoint[2], double * EndPoint[2], bool Vert, bool Horiz){
+void AddGuideLine(double * StartPoint[2], double * EndPoint[2], bool Vert, bool Horiz){
   for (i = 0; i <= MaxLines; i++;){
     if(MemLines[i].Taken == false){
       MemLines[i].Taken = true;
@@ -76,7 +76,7 @@ void AddLine(double * StartPoint[2], double * EndPoint[2], bool Vert, bool Horiz
   
   
   }
-// I forgot to finish this
+// Finished(ish)!!
 void LineDesig (double ** Pairs{}, bool Switch){
   int leng = sizeof(Pairs) / 64;
   double StartSlope;
@@ -102,7 +102,7 @@ void LineDesig (double ** Pairs{}, bool Switch){
               LineEnd = [Pairs[f][0], Pairs[f][1]];
               i = i + f;
               f = leng + 1;
-              AddLine(LineStart, LineEnd, true, false);
+              AddGuideLine(LineStart, LineEnd, true, false);
               Latch = true;
               }
             }
@@ -112,16 +112,22 @@ void LineDesig (double ** Pairs{}, bool Switch){
             EndSlope = (Pairs[i+2][1] - Pairs[i+1][1]) / (Pairs[i+2][0] - Pairs[i+1][0]);
             Latch = false;
             }
+         
           if(Pairs[i][0] == Pairs[i+1][0] && Vertical == false){
             LineEnd = [Pairs[i][0], Pairs[i][1]];
-            AddLine(LineStart, LineEnd, false, false);
+            AddGuideLine(LineStart, LineEnd, false, false);
             }
-          
-           
-          
-          if (abs(StartSlope - EndSlope) <= 0.2){
-          
-          
+          if (abs(StartSlope - EndSlope) >= 0.02 && Vertical == false){
+            LineEnd = [Pairs[i][0], Pairs[i][1]];
+            if(StartSlope == 0){
+                AddGuideLine(LineStart, LineEnd, false, true);
+              }
+            else{
+                AddGuideLine(LineStart, LineEnd, false, false;)
+              }
+            }
+           if(Latch == false && Vertical == false){
+            EndSlope = (Pairs[i+1][1] - Pairs[i][1]) / (Pairs[i+1][0] - Pairs[i][0]);
             }
         }
   
